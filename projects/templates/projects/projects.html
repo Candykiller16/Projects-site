@@ -3,13 +3,21 @@
 {% block content %}
 <h1>My projects</h1>
 
-{{ message }}
-
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aperiam aut beatae corporis eveniet impedit ipsum
     iure nihil nulla obcaecati odio quia quis, rem sit temporibus! Aliquam pariatur rerum soluta!</p>
 
-{% for project in projects %}
-    <a href="{% url 'project' project.id %}"><p>{{ project.title }}</p></a>
-{% endfor %}
+<table>
+    <tr>
+        <th>Project</th>
+    </tr>
+    {% for project in projects %}
+    <tr>
+        <td>{{ project.title }}</td>
+        <td><a href="{% url 'project' project.id %}">View</a></td>
+        <td><a href="{% url 'update-project' project.id %}">Update</a></td>
+        <td><a href="{% url 'delete-project' project.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock content %}
