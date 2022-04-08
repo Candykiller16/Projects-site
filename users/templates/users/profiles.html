@@ -47,13 +47,19 @@
                                     <small>{{skill}}</small>
                                   </span>
                                 {% endfor %}
+
                             </div>
                         </a>
                     </div>
                 </div>
                 {% endfor %}
+
             </div>
         </div>
     </section>
+
+    {% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
+    <br>
 </main>
+
 {% endblock content %}

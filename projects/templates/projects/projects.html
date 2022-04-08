@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+
 {% block content %}
 
 
@@ -31,14 +32,6 @@
         <div class="container">
             <div class="grid grid--three">
 
-
-
-
-
-
-
-
-
                 {% for project in projects %}
                 <div class="column">
                     <div class="card project">
@@ -69,28 +62,7 @@
         </div>
     </section>
 
-    {% if projects.has_other_pages %}
-    <div class="pagination">
-        <ul class="conteiner">
-
-            {% if projects.has_previous %}
-                <li><a href="?page={{projects.previous_page_number}}" class="btn page-link">&#10094; Prev</a></li>
-            {% endif %}
-
-            {% for page in custom_range %}
-                {% if page == projects.number %}
-                    <li><a href="?page={{page}}" class="btn page-link btn--sub">{{page}}</a></li>
-                {% else %}
-                    <li><a href="?page={{page}}" class="btn page-link">{{page}}</a></li>
-                {% endif %}
-            {% endfor %}
-            {% if projects.has_next %}
-                <li><a href="?page={{projects.next_page_number}}" class="btn page-link">Next &#10095;</a></li>
-            {% endif %}
-        </ul>
-    </div>
-    {% endif %}
-
+    {% include 'pagination.html' with queryset=projects custom_range=custom_range %}
 </main>
 
 {% endblock content %}
