@@ -4,26 +4,14 @@ from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Project, Tag
 from .forms import ProjectForm
-from .utils import searchProjects
+from .utils import searchProjects, paginateProjects
 
 
 def projects(request):
     projects, search_query = searchProjects(request)
+    custom_range, projects = paginateProjects(request, projects, 3)
 
-    page = request.GET.get('page')
-    result = 3
-    paginator = Paginator(projects, result)
-
-    try:
-        projects = paginator.page(page)
-    except PageNotAnInteger:
-        page = 1
-        projects = paginator.page(page)
-    except EmptyPage:
-        page = paginator.num_pages
-        projects = paginator.page(page)
-
-    context = {'projects': projects, 'search_query': search_query, 'paginator': paginator}
+    context = {'projects': projects, 'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'projects/projects.html', context)
 
 
