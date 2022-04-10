@@ -57,7 +57,7 @@ def registerUser(request):
             return redirect('edit-account')
 
         else:
-            messages.error(request, 'User has occured an error creating profile')
+            messages.error(request, 'User has occured an error during creating profile')
 
     context = {'page': page, 'form': form}
     return render(request, 'users/login_register.html', context)
