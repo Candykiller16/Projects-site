@@ -41,6 +41,7 @@ class Project(models.Model):
         self.vote_ratio = ratio
         self.save()
 
+
 class Review(models.Model):
     VOTE_TYPE = (
         ('up', 'Up Vote'),
