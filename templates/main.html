@@ -35,6 +35,7 @@
             <p class="alert__message">{{message}}</p>
             <button class="alert__close">x</button>
         </div>
+        <script src="{% static 'uikit/app.js' %}"></script>
     {% endfor %}
 
     {% endif %}
@@ -44,6 +45,6 @@
     {% endblock content %}
 
 </body>
-<script src="{% static 'uikit/app.js' %}"></script>
+
 <script src="{% static 'js/main.js' %}"></script>
 </html>
