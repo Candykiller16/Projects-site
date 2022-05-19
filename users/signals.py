@@ -20,7 +20,7 @@ def createProfile(sender, instance, created, **kwargs):
         )
 
         subject = 'Welcome to the club body'
-        message = "Let's celebrate and suck some dicks"
+        message = "Let's celebrate and eat some cakes"
 
         send_mail(
             subject,
